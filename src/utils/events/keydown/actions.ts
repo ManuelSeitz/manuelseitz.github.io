@@ -34,7 +34,7 @@ function handleEnter(e: KeyboardEvent) {
 
   if (commandNames.includes(lowercasedInput)) {
     const selectedCommand = commands.find(
-      (command) => command.name.toLowerCase() === lowercasedInput
+      (command) => command.name.toLowerCase() === lowercasedInput,
     );
     info.innerHTML = helpInfo;
     commandActions[selectedCommand?.id as Commands]();
@@ -84,7 +84,7 @@ export function handleRegularChar(e: KeyboardEvent) {
 
   suggest =
     commandNames.find((command) =>
-      command.startsWith(input.value.toLowerCase())
+      command.startsWith(input.value.toLowerCase()),
     ) ?? "";
 
   if (suggest) {
