@@ -1,0 +1,9 @@
+[
+  { "id": "typescript", "name": "TypeScript" },
+  { "id": "react", "name": "React" },
+  { "id": "tailwind", "name": "Tailwind CSS" },
+  { "id": "php", "name": "PHP" },
+  { "id": "php-unit", "name": "PHP Unit" },
+  { "id": "laravel", "name": "Laravel" },
+  { "id": "mysql", "name": "MySQL" }
+]

@@ -1,0 +1,19 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Manuel Seitz</title>
+    <Font cssVariable="--font-sans" preload />
+    <Font cssVariable="--font-code" preload />
+  </head>
+  <body class="bg-neutral-950 font-sans text-neutral-50">
+    <slot />
+  </body>
+</html>

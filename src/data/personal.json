@@ -1,0 +1,24 @@
+{
+  "site": "https://manuelseitz.github.io",
+  "email": "manuuseitz@gmail.com",
+  "social": [
+    {
+      "id": "github",
+      "name": "GitHub",
+      "href": "https://github.com/ManuelSeitz"
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "href": "https://www.linkedin.com/in/manuel-seitz/"
+    }
+  ],
+  "projects": [
+    {
+      "id": "gema",
+      "name": "GEMA",
+      "description": "CMMS para hospitales y clínicas",
+      "href": "/projects/gema"
+    }
+  ]
+}

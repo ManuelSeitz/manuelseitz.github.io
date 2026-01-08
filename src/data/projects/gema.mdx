@@ -1,0 +1,98 @@
+---
+title: "GEMA"
+stack:
+  - typescript
+  - react
+  - tailwind
+  - php
+  - laravel
+  - php-unit
+  - mysql
+updatedDate: "2026-01-06"
+---
+
+import { Image } from "astro:assets";
+import picture1 from "../../assets/images/gema/gema_1.webp";
+import picture2 from "../../assets/images/gema/gema_2.webp";
+import picture3 from "../../assets/images/gema/gema_3.webp";
+
+**GEMA** (Gestión de Equipos y Mantenimiento Automatizado) es un software dedicado a la gestión de equipos médicos y el mantenimiento de los mismos.
+
+<div class="space-y-8">
+
+<section class="space-y-2">
+
+## » Rol en el proyecto
+
+Desempeñé el rol de **líder del equipo de desarrollo**. Esto significó trabajar con el equipo de front-end y de back-end en simultáneo, coordinando tareas, corrigiendo fallos técnicos, y asegurándome que todo se cumpliera.
+
+<div>
+
+Responsabilidades:
+
+- Diseño y desarrollo de la interfaz de usuario utilizando **React** y **Tailwind CSS**
+- Creación de UI en **Figma**, asegurando una experiencia intuitiva y responsiva
+- Desarrollo de una **API REST** utilizando **Laravel** y su vinculación con el front-end
+- Control de calidad a través de revisiones de código y pruebas unitarias con **PHP Unit**
+- Creación y mantenimiento de documentación técnica
+
+</div>
+
+</section>
+
+<section class="space-y-2">
+
+## » Retos técnicos
+
+Uno de los retos más complejos que enfrenté fue modificar gran parte de la estructura de la base de datos a mitad del desarrollo, esto ocurrió debido a que surgieron nuevos requerimientos y era necesaria una reestructuración.
+
+Sin embargo, el uso de **Eloquent ORM** y la organización del código hicieron que la reestructuración no fuera tan dolorosa como parecía en principio, teniendo todo solucionado en una semana.
+
+Otro reto, más enfocado al **desarrollo front-end**, fue diseñar la UI para dispositivos móviles en tiempo crítico, ya que la fecha límite para entregar el proyecto estaba cerca. Después de mucho trabajo, logré que la interfaz fuera completamente funcional y adaptada a dispositivos móviles en menos de una semana.
+
+</section>
+
+<section class="space-y-2">
+
+## » ¿Qué aprendí?
+
+En un proyecto tan grande como este, algo que aprendí es a organizar bien el código (por razones de escalabilidad), y a trabajar adecuadamente en equipo.
+
+- Aproveché el uso de **componentes** y **layouts** para reutilizar código
+- Utilicé **TypeScript** para proporcionar seguridad con los tipos de datos
+- Aprendí a crear **contextos** en React, para evitar el prop drilling
+- Implementé **custom hooks** de React, para no sobrecargar componentes
+
+Por el lado del diseño, mejoré mis habilidades en **Figma** y conocí nuevos plugins para paletas de colores e íconos. Además, investigué sobre cómo hacer un diseño limpio. El libro <a href="https://www.refactoringui.com/" target="_blank" rel="noopener noreferrer">Refactoring UI</a> me ayudó mucho en el proceso.
+
+Aprendí muchísimas cosas más, incluyendo el uso de buenas prácticas en **Git**, la metodología **SCRUM**, el framework **Laravel**, y el diseño de base de datos con diagramas, pero no quiero extender demasiado el contenido.
+
+</section>
+
+<section>
+
+## » Producto final
+
+<div class="grid mt-2 grid-cols-3 gap-4 grid-rows-2 select-none [&>img]:object-contain [&>img]:object-top [&>img]:rounded-xl max-md:grid-cols-1 max-md:grid-rows-none">
+  <Image
+    src={picture1}
+    alt="Sección de equipos médicos con diferentes widgets"
+    draggable={false}
+    class="col-span-2"
+  />
+  <Image
+    src={picture2}
+    alt="Sección de equipos médicos vista desde un dispositivo móvil"
+    draggable={false}
+    class="row-span-2 max-md:row-span-1"
+  />
+  <Image
+    src={picture3}
+    alt="Analíticas relacionadas a equipos médicos"
+    draggable={false}
+    class="col-span-2"
+  />
+</div>
+
+</section>
+</div>

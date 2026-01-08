@@ -1,0 +1,10 @@
+[
+  {
+    "id": "projects",
+    "name": "Proyectos",
+    "description": "# Mis proyectos más destacados"
+  },
+  { "id": "social", "name": "Social", "description": "# Mis redes sociales" },
+  { "id": "email", "name": "Email", "description": "# Contacta conmigo" },
+  { "id": "resume", "name": "CV", "description": "# Descarga mi CV" }
+]
