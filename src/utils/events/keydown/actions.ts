@@ -8,7 +8,7 @@ const commandNames = commands.map((command) => command.name.toLowerCase());
 const content = document.getElementById("content") as HTMLElement;
 const input = document.getElementById("input") as HTMLInputElement;
 const info = document.getElementById("info") as HTMLElement;
-let suggest = "";
+let suggestion = "";
 let lastList: HTMLElement | null = null;
 let selectedListItem: Element | null = null;
 const helpInfo =
@@ -21,8 +21,30 @@ const commandActions: Record<Commands, () => void> = {
   email: () => executeEmail(),
 };
 
+function findSuggestion() {
+  suggestion =
+    commandNames.find((command) =>
+      command.startsWith(input.value.toLowerCase()),
+    ) ?? "";
+
+  if (suggestion) {
+    info.innerHTML =
+      "&nbsp;".repeat(input.value.length) +
+      suggestion.slice(input.value.length);
+    info.classList.remove("hidden", "max-sm:hidden");
+    input.classList.add("z-20");
+  } else {
+    info.classList.add("hidden", "max-sm:hidden");
+    input.classList.remove("z-20");
+  }
+
+  info.innerHTML =
+    "&nbsp;".repeat(input.value.length) + suggestion.slice(input.value.length);
+}
+
 function handleBackspace() {
   input.value = input.value.slice(0, -1);
+  findSuggestion();
   if (input.value.length === 0) {
     info.innerHTML = helpInfo;
   }
@@ -49,7 +71,7 @@ function handleEnter(e: KeyboardEvent) {
   }
 
   input.value = "";
-  suggest = "";
+  suggestion = "";
   lastList = document.querySelector("#content > ul:last-of-type");
   selectedListItem?.classList.remove("selected");
   selectedListItem = null;
@@ -59,8 +81,8 @@ function handleEnter(e: KeyboardEvent) {
 
 function handleTab(e: KeyboardEvent) {
   e.preventDefault();
-  if (suggest) {
-    input.value = suggest;
+  if (suggestion) {
+    input.value = suggestion;
   }
 }
 
@@ -81,20 +103,7 @@ function handleArrowUp(e: KeyboardEvent) {
 
 export function handleRegularChar(e: KeyboardEvent) {
   input.value += e.key;
-
-  suggest =
-    commandNames.find((command) =>
-      command.startsWith(input.value.toLowerCase()),
-    ) ?? "";
-
-  if (suggest) {
-    info.innerHTML = suggest;
-    info.classList.remove("hidden", "max-sm:hidden");
-    input.classList.add("z-20");
-  } else {
-    info.classList.add("hidden", "max-sm:hidden");
-    input.classList.remove("z-20");
-  }
+  findSuggestion();
 }
 
 export function getKeydownActions(e: KeyboardEvent) {
