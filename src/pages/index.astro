@@ -68,6 +68,7 @@ import commands from "../data/commands.json";
 </Layout>
 
 <script>
+  import { handleInput } from "../utils/events/input.ts";
   import { handleKeydown } from "../utils/events/keydown/keydown.ts";
   import { handleScroll } from "../utils/events/scroll.ts";
   import { writeInitialParagraphs } from "../utils/init.ts";
@@ -75,19 +76,19 @@ import commands from "../data/commands.json";
   const content = document.getElementById("content") as HTMLElement;
 
   const input = document.getElementById("input") as HTMLInputElement;
-  let inputDisabled = true;
-  input.disabled = inputDisabled;
+  input.disabled = true;
 
   content.addEventListener("scroll", handleScroll);
 
-  window.addEventListener("keydown", (e) => handleKeydown(e, inputDisabled));
+  input.addEventListener("input", handleInput);
 
   await writeInitialParagraphs();
+  input.disabled = false;
+
+  window.addEventListener("keydown", handleKeydown);
 
   const commandList = document.getElementById("command-list") as HTMLElement;
   commandList.classList.remove("hidden");
-  inputDisabled = false;
-  input.disabled = inputDisabled;
 </script>
 
 <style is:inline>

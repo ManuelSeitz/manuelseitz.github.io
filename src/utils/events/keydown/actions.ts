@@ -6,11 +6,16 @@ import { executeSocial } from "../../commands/social";
 
 const commandNames = commands.map((command) => command.name.toLowerCase());
 const content = document.getElementById("content") as HTMLElement;
+
 const input = document.getElementById("input") as HTMLInputElement;
 const info = document.getElementById("info") as HTMLElement;
+const cursor = document.querySelector(".cursor") as HTMLDivElement;
+
 let suggestion = "";
+
 let lastList: HTMLElement | null = null;
 let selectedListItem: Element | null = null;
+
 const helpInfo =
   'usa <strong class="text-neutral-400">help</strong> si necesitas ayuda';
 
@@ -21,16 +26,13 @@ const commandActions: Record<Commands, () => void> = {
   email: () => executeEmail(),
 };
 
-function findSuggestion() {
+export function findSuggestion() {
   suggestion =
     commandNames.find((command) =>
       command.startsWith(input.value.toLowerCase()),
     ) ?? "";
 
   if (suggestion) {
-    info.innerHTML =
-      "&nbsp;".repeat(input.value.length) +
-      suggestion.slice(input.value.length);
     info.classList.remove("hidden", "max-sm:hidden");
     input.classList.add("z-20");
   } else {
@@ -42,12 +44,15 @@ function findSuggestion() {
     "&nbsp;".repeat(input.value.length) + suggestion.slice(input.value.length);
 }
 
-function handleBackspace() {
-  input.value = input.value.slice(0, -1);
-  findSuggestion();
+export function updateInfo() {
   if (input.value.length === 0) {
-    info.innerHTML = helpInfo;
+    info.classList.remove("hidden");
+    info.classList.add("max-sm:hidden");
+    info.innerHTML =
+      'usa <strong class="text-neutral-400">help</strong> si necesitas ayuda';
   }
+
+  cursor.style.left = input.value.length + "ch";
 }
 
 function handleEnter(e: KeyboardEvent) {
@@ -73,9 +78,6 @@ function handleEnter(e: KeyboardEvent) {
   input.value = "";
   suggestion = "";
   lastList = document.querySelector("#content > ul:last-of-type");
-  selectedListItem?.classList.remove("selected");
-  selectedListItem = null;
-  info.classList.remove("hidden");
   content.scrollTo({ top: content.scrollHeight });
 }
 
@@ -101,14 +103,8 @@ function handleArrowUp(e: KeyboardEvent) {
   selectedListItem?.classList.add("selected");
 }
 
-export function handleRegularChar(e: KeyboardEvent) {
-  input.value += e.key;
-  findSuggestion();
-}
-
 export function getKeydownActions(e: KeyboardEvent) {
   return {
-    Backspace: handleBackspace,
     Enter: () => handleEnter(e),
     Tab: () => handleTab(e),
     ArrowUp: () => handleArrowUp(e),
