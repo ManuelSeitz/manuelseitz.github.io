@@ -1,7 +1,7 @@
 ---
 import { Font } from "astro:assets";
-import "../styles/global.css";
 import personal from "../data/personal.json";
+import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -23,13 +23,13 @@ const { title, updatedDate } = Astro.props;
   <body class="overflow-x-hidden bg-neutral-950 font-sans text-neutral-50">
     <slot />
     <footer class="mt-8 border-t border-neutral-900 px-8 py-4 text-sm">
-      <div class="mx-auto flex max-w-7xl items-center justify-between">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-2">
         <div
           class="flex items-center gap-2 max-md:flex-col max-md:items-start max-md:gap-0"
         >
           <strong>Manuel Seitz</strong>
           <div class="size-1 rounded-full bg-neutral-50 max-md:hidden"></div>
-          <p class="text-neutral-400 max-md:text-xs">
+          <p class="text-balance text-neutral-400 max-md:text-xs">
             Actualizado el {
               updatedDate.toLocaleString("es", {
                 dateStyle: "long",
