@@ -6,7 +6,7 @@ import commands from "../data/commands.json";
 <Layout>
   <main class="grid min-h-screen place-items-center">
     <section
-      class="terminal relative flex h-[75vh] w-4/5 flex-col rounded-xl bg-neutral-900"
+      class="terminal relative flex h-[75vh] w-4/5 flex-col rounded-xl bg-neutral-900 max-md:h-[90vh] max-md:w-[90%]"
     >
       <header
         class="flex items-center justify-between border-b-2 border-neutral-800 px-6 py-3"
@@ -48,18 +48,15 @@ import commands from "../data/commands.json";
         class="font-code flex items-center gap-2 border-t-2 border-neutral-700 p-6"
       >
         <span class="shrink-0 font-bold text-pink-300">~/manuel-seitz </span>
-        <div class="relative flex basis-full items-center">
-          <input
-            type="text"
-            id="input"
-            tabindex="-1"
-            class="pointer-events-none inline-block"
-            style="width:0ch"
-          />
-          <span id="info" class="absolute z-10 text-neutral-500"
+        <div class="relative flex basis-full items-center leading-4">
+          <input type="text" id="input" class="z-20 inline-block w-full" />
+          <span id="info" class="absolute z-10 text-neutral-500 max-sm:hidden"
             >usa <strong class="text-neutral-400">help</strong> si necesitas ayuda</span
           >
-          <div class="cursor inline-block h-4 w-2.5 bg-neutral-50"></div>
+          <div
+            class="cursor absolute top-0 left-0 inline-block h-4 w-2.5 bg-neutral-50"
+          >
+          </div>
         </div>
       </div>
     </section>

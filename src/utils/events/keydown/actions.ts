@@ -89,10 +89,10 @@ export function handleRegularChar(e: KeyboardEvent) {
 
   if (suggest) {
     info.innerHTML = suggest;
-    info.classList.remove("hidden");
+    info.classList.remove("hidden", "max-sm:hidden");
     input.classList.add("z-20");
   } else {
-    info.classList.add("hidden");
+    info.classList.add("hidden", "max-sm:hidden");
     input.classList.remove("z-20");
   }
 }

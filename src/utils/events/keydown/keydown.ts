@@ -1,8 +1,11 @@
 import { getKeydownActions, handleRegularChar } from "./actions";
 
 export function handleKeydown(e: KeyboardEvent, inputDisabled: boolean) {
+  if (inputDisabled) return;
+
   const input = document.getElementById("input") as HTMLInputElement;
   const info = document.getElementById("info") as HTMLElement;
+  const cursor = document.querySelector(".cursor") as HTMLDivElement;
 
   const isSpecialChar = e.key.length !== 1;
 
@@ -13,7 +16,8 @@ export function handleKeydown(e: KeyboardEvent, inputDisabled: boolean) {
 
   if (input.value.length === 0) {
     info.classList.remove("hidden");
+    info.classList.add("max-sm:hidden");
   }
 
-  input.style.width = input.value.length + "ch";
+  cursor.style.left = input.value.length + "ch";
 }
