@@ -9,6 +9,15 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig([
   {
+    ignores: [
+      "**/node_modules/",
+      "**/dist/",
+      "**/build/",
+      "**/*.lock",
+      "**/package-lock.json",
+    ],
+  },
+  {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
     plugins: { js },
     extends: ["js/recommended"],
