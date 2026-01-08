@@ -103,10 +103,26 @@ function handleArrowUp(e: KeyboardEvent) {
   selectedListItem?.classList.add("selected");
 }
 
+function handleArrowDown(e: KeyboardEvent) {
+  e.preventDefault();
+  if (!lastList) return;
+
+  selectedListItem?.classList.remove("selected");
+
+  if (!selectedListItem || !selectedListItem.nextElementSibling) {
+    selectedListItem = lastList.firstElementChild;
+  } else {
+    selectedListItem = selectedListItem.nextElementSibling;
+  }
+
+  selectedListItem?.classList.add("selected");
+}
+
 export function getKeydownActions(e: KeyboardEvent) {
   return {
     Enter: () => handleEnter(e),
     Tab: () => handleTab(e),
     ArrowUp: () => handleArrowUp(e),
+    ArrowDown: () => handleArrowDown(e),
   };
 }
