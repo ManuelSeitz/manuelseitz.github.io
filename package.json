@@ -29,6 +29,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "globals": "^17.0.0",
     "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
@@ -51,6 +52,12 @@
           "parser": "astro"
         }
       }
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts,json,md,css,astro}": [
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }
