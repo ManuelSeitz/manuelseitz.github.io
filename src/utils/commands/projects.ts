@@ -1,8 +1,8 @@
 import personal from "../../data/personal.json";
+import { updateInfo } from "../events/keydown/actions.ts";
 
 export function executeProjects(): void {
   const content = document.getElementById("content") as HTMLElement;
-  const info = document.getElementById("info") as HTMLElement;
 
   const list = document.createElement("ul");
   list.classList.add("list");
@@ -27,6 +27,7 @@ export function executeProjects(): void {
   content.appendChild(list);
   const br = document.createElement("br");
   content.appendChild(br);
-  info.innerHTML =
-    'usa las <strong class="text-neutral-400">flechas</strong> para navegar entre proyectos';
+  updateInfo(
+    'usa las <strong class="text-neutral-400">flechas</strong> para navegar entre proyectos',
+  );
 }

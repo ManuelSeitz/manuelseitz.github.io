@@ -1,4 +1,4 @@
-import { getKeydownActions, updateInfo } from "./actions.ts";
+import { getKeydownActions } from "./actions.ts";
 
 export function handleKeydown(e: KeyboardEvent) {
   const input = document.getElementById("input") as HTMLInputElement;
@@ -13,6 +13,4 @@ export function handleKeydown(e: KeyboardEvent) {
 
   const keydownActions = getKeydownActions(e);
   keydownActions[e.key as keyof typeof keydownActions]?.();
-
-  updateInfo();
 }

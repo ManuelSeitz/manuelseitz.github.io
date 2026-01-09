@@ -16,8 +16,7 @@ let suggestion = "";
 let lastList: HTMLElement | null = null;
 let selectedListItem: Element | null = null;
 
-const helpInfo =
-  'usa <strong class="text-neutral-400">help</strong> si necesitas ayuda';
+const infoMsg = info.innerHTML;
 
 const commandActions: Record<Commands, () => void> = {
   projects: () => executeProjects(),
@@ -44,13 +43,14 @@ export function findSuggestion() {
     "&nbsp;".repeat(input.value.length) + suggestion.slice(input.value.length);
 }
 
-export function updateInfo() {
+export function updateInfo(message?: string) {
   if (input.value.length === 0) {
     info.classList.remove("hidden");
     info.classList.add("max-sm:hidden");
-    info.innerHTML =
-      'usa <strong class="text-neutral-400">help</strong> si necesitas ayuda';
+    info.innerHTML = message || infoMsg;
   }
+
+  console.log(info.innerHTML);
 
   cursor.style.left = input.value.length + "ch";
 }
@@ -59,11 +59,14 @@ function handleEnter(e: KeyboardEvent) {
   e.preventDefault();
   const lowercasedInput = input.value.toLowerCase();
 
+  input.value = "";
+  suggestion = "";
+  updateInfo();
+
   if (commandNames.includes(lowercasedInput)) {
     const selectedCommand = commands.find(
       (command) => command.name.toLowerCase() === lowercasedInput,
     );
-    info.innerHTML = helpInfo;
     commandActions[selectedCommand?.id as Commands]();
   } else if (selectedListItem && !input.value) {
     const anchor = selectedListItem.querySelector("a");
@@ -75,8 +78,6 @@ function handleEnter(e: KeyboardEvent) {
     content.appendChild(element);
   }
 
-  input.value = "";
-  suggestion = "";
   lastList = document.querySelector("#content > ul:last-of-type");
   content.scrollTo({ top: content.scrollHeight });
 }
